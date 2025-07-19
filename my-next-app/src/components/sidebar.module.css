@@ -1,0 +1,111 @@
+body{
+    padding: 0;
+    margin: 0;
+  }
+  .root{
+  }
+  .main{
+    display: flex;
+  }
+  .title{
+    white-space: nowrap;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #6C63FF;
+  }
+
+  .logout{
+    font-size: 20px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50vh;
+    width: 80%;
+    color: #FF6F91;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .logout:hover{
+    color: #4ECDC4;
+    transform: scale(1.1);
+  }
+  
+  .sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:250px;
+    height: 100vh;
+    background-color: #F9F9F9;
+    transition: width 0.5s;
+  }
+  
+  .Link{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #22223B;
+    border: 1px solid #6C63FF;
+    height: 38px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #fff;
+    transition: background 0.5s linear, transform 0.2s linear, color 0.2s;
+  }
+  
+  .Link.link-animate {
+    animation: link-animate 1s;
+  }
+
+  .logout.link-animate {
+    animation: link-animate 1s;
+  }
+  
+  @keyframes link-animate {
+    0%{
+      transform: translateX(-110px);
+      opacity: 0;
+    }
+    100%{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+    
+  }
+  
+  .Link:hover{
+    color: #6C63FF;
+    background-color: #FFD166;
+    transform: scale(1.1);
+  }
+  
+  .icon{
+    height: 100vh;
+    background-color: #6C63FF;
+    width:50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 10px;
+    color: #FFD166;
+  }
+  
+  .social{
+    color: #22223B;
+    transition: background 0.5s linear, transform 0.2s linear;
+  }
+  
+  .social:hover{
+    color: #FF6F91;
+    transform: scale(1.2);
+  }
