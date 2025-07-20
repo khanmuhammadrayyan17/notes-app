@@ -15,7 +15,7 @@
     gap: 50px;
     padding-left: 20px;
 }
-
+    
 .plusIconContainer {
     background-color: #192a56;
     width: 48px;
@@ -58,27 +58,25 @@
     row-gap: 40px;
 }
 
-/* --- KEEP THE PLAYFUL NOTE STYLES BELOW --- */
 .note {
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 24px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     background: #fffbe7;
-    width: 330px;
-    min-height: 290px;
+    width: 340px;
+    min-height: 444.8px;
     box-shadow: 0 4px 16px rgba(25, 42, 86, 0.10);
     padding: 1.5rem 1.2rem 1.2rem 1.2rem;
     margin-bottom: 1rem;
     position: relative;
-    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
-    border: 2.5px dashed #fbc531;
+    transition: transform 0.3s, box-shadow 0.15s, background 0.2s;
 }
 
 .note:hover {
-    box-shadow: 0 8px 32px rgba(25, 42, 86, 0.18);
-    transform: translateY(-8px) scale(1.03) rotate(-2deg);
+    box-shadow: 0 8px 20px rgba(25, 42, 86, 0.18);
+    transform: scale(1.03);
     background: #fffde7;
 }
 
@@ -89,8 +87,8 @@
     text-overflow: ellipsis;
     align-self: flex-start;
     font-size: 2.1rem;
-    width: 260px;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
 
@@ -103,10 +101,10 @@
     word-break: break-all;
     margin: 0;
     margin-top: 20px;
-    width: 296px;
-    min-height: 180px;
+    width: 306px;
+    min-height: 300px;
     font-size: 1.2rem;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .time {
@@ -128,13 +126,13 @@
 .icon:hover {
     cursor: pointer;
     color: #fbc531;
-    transform: scale(1.2) rotate(-10deg);
+    transform: scale(1.2);
     transition: color 0.2s, transform 0.2s;
 }
 
 .edit {
     flex-direction: column;
-    min-height: 200px;
+    min-height: 400px;
 }
 
 .edittext {
@@ -142,11 +140,11 @@
     background-color: #fffbe7;
     padding: 10px;
     margin: 0;
-    margin-top: 20px;
-    width: 296px;
-    min-height: 100px;
+    margin-top: 10px;
+    width: 306px;
+    min-height: 300px;
     border-radius: 12px;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
 }
 
@@ -160,25 +158,32 @@
     border-radius: 12px;
     border: 1.5px solid #fbc531;
     background-color: #fffbe7;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     align-self: flex-start;
     font-size: 2rem;
-    width: 260px;
+    width: 276px;
     outline: none;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.label{
+    width: 260px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .color {
-    margin-top: 10px;
-    border-radius: 8px;
-    border: 1.5px solid #fbc531;
-    background-color: #fffbe7;
+    border-color: transparent;
+    width: 10%;
+    margin-left: 10px;
+    border: none;
     outline: none;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .loading_screen {
@@ -186,7 +191,7 @@
     width: 100vw;
     background: linear-gradient(135deg, #F9F9F9 0%, #fffbe7 100%);
     color: #22223B;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -220,7 +225,7 @@
     background: #fffbe7;
     color: #192a56;
     font-size: 20px;
-    font-family: 'Caveat', cursive, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0 2px 8px rgba(25, 42, 86, 0.08);
     transition: box-shadow 0.2s, background 0.2s;
 }

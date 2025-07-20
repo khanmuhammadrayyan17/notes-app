@@ -242,3 +242,21 @@
         opacity: 0;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .form {
+        width: 100%;
+    }
+    .form button{
+        width: 90%;
+    }
+    .container{
+        width: 90%;
+    }
+    .inputWrapper {
+        width: 90%;
+    }
+    .loginHeading{
+        width: 90%;
+    }
+}

@@ -13,7 +13,7 @@ export default function Home() {
   const [notes, setnotes] = useState([]);
   const [fnotes, setfnotes] = useState([]);
   const [render, setrender] = useState(1);
-  const [open, setopen] = useState('flex');
+  const [editingIdx, setEditingIdx] = useState(null);
   const [access,setaccess] = useState('false');
   useEffect(() => {
     const fetch_data = async function () {
@@ -73,7 +73,7 @@ export default function Home() {
           <ul className={styles.notes}>
             {fnotes.map((row, idx) => (
               <li className={styles.note} key={idx} style={{backgroundColor:row.color}}>
-                  <div className={styles.top} style={{display:open}}>
+                  <div className={styles.top} style={{display: editingIdx === idx ? 'none' : 'flex'}}>
                     <h1 className={styles.titles}>{row.title}</h1>
                     <FontAwesomeIcon className={styles.icon} icon={faTrashCan} onClick={async () => {
                       const response = await fetch('http://localhost:3001/', {
@@ -88,11 +88,11 @@ export default function Home() {
                         setrender(cur => cur + 1);
                       }
                     }} />
-                    <FontAwesomeIcon className={styles.icon} icon={faPenToSquare} onClick={()=>setopen('none')}/>
+                    <FontAwesomeIcon className={styles.icon} icon={faPenToSquare} onClick={() => setEditingIdx(idx)}/>
                   </div>
-                  <p className={styles.text} style={{display:open}}>{row.content}</p>
-                  <p className={styles.time} style={{display:open}}>Last Updated: &nbsp;{row.updated_at}</p>
-                <form className={styles.edit} style={{display: open === 'flex'? 'none' : 'flex'}}>
+                  <p className={styles.text} style={{display: editingIdx === idx ? 'none' : 'flex'}}>{row.content}</p>
+                  <p className={styles.time} style={{display: editingIdx === idx ? 'none' : 'flex'}}>Last Updated: &nbsp;{row.updated_at}</p>
+                <form className={styles.edit} style={{display: editingIdx === idx ? 'flex' : 'none'}}>
                   <div className={styles.top}>
                     <input
                       className={styles.edittitles}
@@ -123,7 +123,7 @@ export default function Home() {
                           }),
                           credentials: 'include'
                         });
-                        setopen('flex');
+                        setEditingIdx(null);
                         if (response.status === 200) {
                           setrender(cur => cur + 1);
                         }
@@ -141,14 +141,15 @@ export default function Home() {
                       setfnotes(newNotes); // <-- Add this line
                     }}
                   />
-                  <input className={styles.color} placeholder='Set color of note' value={row.color} 
-                  onChange={e => {
-                    const newNotes = notes.map((note, i) =>
-                      i === idx ? { ...note, color: e.target.value } : note
-                    );
-                    setnotes(newNotes);
-                    setfnotes(newNotes); // <-- Add this line
-                  }}/>
+                  <label className={styles.label}> Color
+                    <input className={styles.color} type='color' value={row.color} 
+                    onChange={e => {
+                      const newNotes = notes.map((note, i) =>
+                        i === idx ? { ...note, color: e.target.value } : note
+                      );
+                      setnotes(newNotes);
+                      setfnotes(newNotes); // <-- Add this line
+                    }}/></label>
                 </form>
               </li>
             ))}
