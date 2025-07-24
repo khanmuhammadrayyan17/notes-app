@@ -249,13 +249,13 @@
         justify-content: center;
     }
     .searchBar{
-        width: 350px;
+        width: 320px;
     }
     .note{
-        width: 340px;
+        width: 300px;
     }
     .topbar {
-        height: 50px;
+        height: 60px;
         gap: 20px;
         padding-left: 15px;
     }
