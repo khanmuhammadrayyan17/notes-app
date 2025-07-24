@@ -170,8 +170,8 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <div className={styles.circle} style={{opacity:display}} onClick={()=>window.scrollTo({top:0})}>
-          <FontAwesomeIcon icon={faArrowUp} className={styles.upArrow} />
+                    <div className={styles.circle} style={{opacity:display}} onClick={()=>window.scrollTo({top:0, behavior: 'smooth'})}>
+            <FontAwesomeIcon icon={faArrowUp} />
           </div>
         </div>
       </div>

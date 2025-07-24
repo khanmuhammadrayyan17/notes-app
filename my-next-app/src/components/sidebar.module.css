@@ -96,13 +96,6 @@
   }
 
   @media screen and (max-width:650px) {
-    .icon{
-      width: 30px;
-      font-size: 20px;
-    }
-    .sidebar{
-      position: relative;
-    }
     .logout, .Link, .title{
       white-space: nowrap;
       overflow: hidden;
