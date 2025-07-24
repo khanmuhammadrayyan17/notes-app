@@ -83,7 +83,7 @@
   }
   
   .icon{
-    height: 100vh;
+    min-height: 100vh;
     background-color: #6C63FF;
     width:50px;
     display: flex;
@@ -92,6 +92,14 @@
     font-size: 30px;
     gap: 10px;
     color: #FFD166;
+  }
+
+  @media screen and (max-width:650px) {
+    .icon{
+      width: 30px;
+      font-size: 20px;
+    }
+    
   }
   
   .social{

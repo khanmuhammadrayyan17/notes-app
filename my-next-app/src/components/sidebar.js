@@ -25,7 +25,7 @@ function App() {
         }}>Logout&nbsp;<FontAwesomeIcon icon={faRightFromBracket} /></Link>
       </div>
       <div className={styles.icon}>
-        <FontAwesomeIcon icon={icon} style={{marginTop:'23px',marginBottom:'500px',cursor:'pointer', fontSize:'30px'}} onClick={() => {setanimate((cur)=> cur === '0px'? '250px' : '0px');
+        <FontAwesomeIcon icon={icon} style={{marginTop:'23px',marginBottom:'500px',cursor:'pointer'}} onClick={() => {setanimate((cur)=> cur === '0px'? '250px' : '0px');
           seticon((cur)=> cur === faBars? faXmark: faBars),
           setlink_animate((cur) => cur === 'link-animate'? 'none' : 'link-animate');
         }}/>
