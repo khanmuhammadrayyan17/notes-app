@@ -22,9 +22,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "autoprefixer": "^10",
     "eslint": "^9",
-    "eslint-config-next": "15.3.5",
-    "postcss": "^8"
+    "eslint-config-next": "15.3.5"
   }
 }
