@@ -99,8 +99,8 @@ app.post('/login', async (req, res) => {
     sessionStore[sessionId] = user.email;
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
-      secure: false, // Set to true if using HTTPS
-      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production', // Use HTTPS in production
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Required for cross-site cookies
       maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
     res.status(200).json({ message: 'login successful' });
@@ -172,7 +172,11 @@ app.get('/logout', async(req,res)=>{
   if (sessionId) {
     delete sessionStore[sessionId];
   }
-  res.clearCookie('sessionId', { path: '/' });
+  res.clearCookie('sessionId', { 
+    path: '/',
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+  });
   res.status(200).json({ message: 'Logged out successfully' });
 })
 
@@ -194,7 +198,7 @@ app.post('/forgot-password', async (req, res) => {
     }
   });
 
-  const resetUrl = `http://localhost:3000/reset-password?token=${token}&email=${encodeURIComponent(email)}`;
+  const resetUrl = `https://notes-app-1-c8z1.onrender.com/reset-password?token=${token}&email=${encodeURIComponent(email)}`;
   const mailOptions = {
     from: 'khanrayyan.chakra@gmail.com',
     to: email,
