@@ -44,7 +44,7 @@ export default function Signup() {
     if(submit>1) {
       call();
     }
-  },[submit]);
+  },[submit, form.email, form.name, form.pass, router]);
 
   return (
     <div className={styles.main}>

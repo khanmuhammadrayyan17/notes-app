@@ -51,7 +51,7 @@ export default function Home() {
       setfnotes(data.Notes); // Show all notes by default
     }
     fetch_data();
-  }, [render])
+  }, [render, router])
   if(access === 'false')
   {
     return(

@@ -65,7 +65,7 @@ export default function Login() {
             </div>
             <button type='submit'>Submit</button>
             <p className={styles.signupText}>
-              Don't have an account? <Link href="/signup" className={styles.signupLink}>Sign up</Link>
+              Don&apos;t have an account? <Link href="/signup" className={styles.signupLink}>Sign up</Link>
             </p>
             <Link href="/forgot-password" className={styles.signupLink}>Forgot Password?</Link>
             {message}
