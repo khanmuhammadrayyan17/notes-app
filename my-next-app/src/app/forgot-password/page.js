@@ -11,7 +11,7 @@ export default function ForgotPassword() {
     setSubmitted(true);
     // For now, just show an alert. Replace with actual logic later.
     alert(`Password reset link sent to: ${email}`);
-    fetch('http://localhost:3001/forgot-password',{
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/forgot-password`,{
         method : 'POST',
         headers : {
             'Content-Type':'application/json'

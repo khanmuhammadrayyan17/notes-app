@@ -18,7 +18,7 @@ export default function AddNote() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('http://localhost:3001/auth', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth`, {
           credentials: 'include',
         });
         console.log('sent');
@@ -41,7 +41,7 @@ export default function AddNote() {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:3001/addnote', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/addnote`, {
         method: 'POST',
         credentials: 'include', // <--- this is required
         headers: {

@@ -27,7 +27,7 @@ export default function ResetPasswordPage() {
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token");
       const email = params.get("email"); // Extract email from URL
-      const res = await fetch("http://localhost:3001/reset-password", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reset-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, email, password }), // Include email in request

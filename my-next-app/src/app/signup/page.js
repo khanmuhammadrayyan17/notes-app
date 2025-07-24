@@ -20,7 +20,7 @@ export default function Signup() {
     async function call (){
       setDisplay('none');
       try {
-        const response = await fetch('http://localhost:3001/signup', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -33,7 +33,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetch_data = async function () {
-      const response = await fetch('http://localhost:3001/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
         credentials: 'include'
       })
       if(response.status === 401)
@@ -92,7 +92,7 @@ export default function Home() {
                   <div className={styles.top} style={{display: editingIdx === idx ? 'none' : 'flex'}}>
                     <h1 className={styles.titles}>{row.title}</h1>
                     <FontAwesomeIcon className={styles.icon} icon={faTrashCan} onClick={async () => {
-                      const response = await fetch('http://localhost:3001/', {
+                      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
                         method: 'DELETE',
                         headers: {
                           'Content-Type': 'application/json'
@@ -126,7 +126,7 @@ export default function Home() {
                       icon={faCheck}
                       onClick={async () => {
                         console.log(row.color);
-                        const response = await fetch('http://localhost:3001/', {
+                        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
                           method: 'PATCH',
                           headers: {
                             'Content-Type': 'application/json'

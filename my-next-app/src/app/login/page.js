@@ -17,7 +17,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     setdisplay('none');
     e.preventDefault();
-    const response = await fetch('http://localhost:3001/login', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
       method: 'POST',
       credentials: 'include', // <--- this is required
       headers: { 'Content-Type': 'application/json' },

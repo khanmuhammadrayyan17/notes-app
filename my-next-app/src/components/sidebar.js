@@ -19,7 +19,7 @@ function App() {
         <Link className={`${styles.Link} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} href='/add'><FontAwesomeIcon icon={faSquarePlus} />&nbsp;Add</Link>
         <Link className={`${styles.Link} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} href='' ><FontAwesomeIcon icon={faInfoCircle} />&nbsp;About</Link>
         <Link href='/login' className={`${styles.logout} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} onClick={async()=>{
-          const response = fetch('http://localhost:3001/logout', {
+          const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
             credentials: 'include'
           });
         }}>Logout&nbsp;<FontAwesomeIcon icon={faRightFromBracket} /></Link>
