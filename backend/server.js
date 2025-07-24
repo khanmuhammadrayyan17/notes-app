@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const crypto = require('crypto');
 const session = require('cookie-session');
 const nodemailer = require('nodemailer');
+require('dotenv').config({ path: './variables.env' });
 
 // In-memory session store (for production, use Redis or a database)
 const sessionStore = {};
@@ -25,7 +26,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(session({
   name: 'session',
-  keys: ['yourSecretKeyHere'], // <-- this is your secret
+  keys: [process.env.SESSION_SECRET], // <-- use env variable
   maxAge: 24 * 60 * 60 * 1000
 }));
 
@@ -42,7 +43,7 @@ function requireAuth(req, res, next) {
 }
 
 const pool = new Pool({
-  connectionString: 'postgresql://assignment4_webdev_user:Pt176i9hmpmCVTpwTAvbQ6bMo7h1m1kY@dpg-d1inl3bipnbc73f6194g-a.singapore-postgres.render.com/assignment4_webdev',
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
@@ -185,8 +186,8 @@ app.post('/forgot-password', async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail', // or your email provider
     auth: {
-      user: 'khanrayyan.chakra@gmail.com',
-      pass: 'bduc oedu bppw kslc'
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
     }
   });
 

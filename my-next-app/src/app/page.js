@@ -1,7 +1,7 @@
 'use client';
 import App from '../components/sidebar.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faPenToSquare, faCheck, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPenToSquare, faCheck, faSpinner, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import styles from './page.module.css'
 import Link from 'next/link'
@@ -15,6 +15,22 @@ export default function Home() {
   const [render, setrender] = useState(1);
   const [editingIdx, setEditingIdx] = useState(null);
   const [access,setaccess] = useState('false');
+  const [display, setdisplay] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY !== 0) {
+        setdisplay(1);
+      } else {
+        setdisplay(0);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const fetch_data = async function () {
       const response = await fetch('http://localhost:3001/', {
@@ -154,6 +170,9 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <div className={styles.circle} style={{opacity:display}} onClick={()=>window.scrollTo({top:0})}>
+          <FontAwesomeIcon icon={faArrowUp} className={styles.upArrow} />
+          </div>
         </div>
       </div>
     );
