@@ -254,6 +254,11 @@
     .note{
         width: 340px;
     }
+    .topbar {
+        height: 50px;
+        gap: 20px;
+        padding-left: 15px;
+    }
 }
 
 .circle{

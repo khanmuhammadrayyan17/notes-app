@@ -38,6 +38,7 @@
     height: 100vh;
     background-color: #F9F9F9;
     transition: width 0.5s;
+    overflow: hidden;
   }
   
   .Link{
@@ -99,7 +100,13 @@
       width: 30px;
       font-size: 20px;
     }
-    
+    .sidebar{
+      position: relative;
+    }
+    .logout, .Link, .title{
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
   
   .social{
