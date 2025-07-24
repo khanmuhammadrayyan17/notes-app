@@ -20,7 +20,10 @@ function generateSessionId() {
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // or your frontend URL
+  origin: [
+    'http://localhost:3000', 
+    'https://notes-app-1-c8z1.onrender.com'
+  ], // Allow both local development and production
   credentials: true
 }));
 app.use(cookieParser());
