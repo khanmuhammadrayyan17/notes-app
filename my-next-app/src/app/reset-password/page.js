@@ -47,7 +47,14 @@ export default function ResetPasswordPage() {
 
   return (
     <div className={styles.mainContent}>
-      <div className={styles.formContainer}>
+      <div className={styles.container}>
+        <div className={styles.brandingOverlay}>
+          <div className={styles.brandingContent}>
+            <h1 className={styles.appName}>NotesKeeper</h1>
+            <p className={styles.tagline}>Organize your thoughts</p>
+          </div>
+        </div>
+        <div className={styles.formContainer}>
         <h2 className={styles.title}>Reset Password</h2>
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
@@ -78,6 +85,7 @@ export default function ResetPasswordPage() {
             {loading ? "Resetting..." : "Reset Password"}
           </button>
         </form>
+        </div>
       </div>
     </div>
   );

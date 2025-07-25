@@ -14,10 +14,9 @@ function App() {
   return (
     <div className={styles.main}>
       <div className={styles.sidebar} style={{width:animate}}>
-        <h1 className={styles.title}>Insert Name</h1>
+        <h1 className={styles.title}>NotesKeeper</h1>
         <Link className={`${styles.Link} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} href='/' ><FontAwesomeIcon icon={faHome} />&nbsp;Home</Link>
         <Link className={`${styles.Link} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} href='/add'><FontAwesomeIcon icon={faSquarePlus} />&nbsp;Add</Link>
-        <Link className={`${styles.Link} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} href='' ><FontAwesomeIcon icon={faInfoCircle} />&nbsp;About</Link>
         <Link href='/login' className={`${styles.logout} ${link_animate === 'link-animate' ? styles['link-animate'] : ''}`} onClick={async()=>{
           const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
             credentials: 'include'
@@ -29,9 +28,6 @@ function App() {
           seticon((cur)=> cur === faBars? faXmark: faBars),
           setlink_animate((cur) => cur === 'link-animate'? 'none' : 'link-animate');
         }}/>
-        <Link href=''><FontAwesomeIcon className={styles.social} icon={faFacebook} /></Link>
-        <Link href=''><FontAwesomeIcon className={styles.social} icon={faInstagram} /></Link>
-        <Link href=''><FontAwesomeIcon className={styles.social} icon={faReddit} /></Link>
       </div>
     </div>
   )

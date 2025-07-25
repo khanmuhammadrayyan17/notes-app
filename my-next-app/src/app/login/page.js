@@ -11,12 +11,12 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [display, setdisplay] = useState('flex');
+  const [loading, setLoading] = useState(false);
   const [message, setmessage] = useState('');
 
   const handleSubmit = async (e) => {
-    setdisplay('none');
     e.preventDefault();
+    setLoading(true);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
       method: 'POST',
       credentials: 'include', // <--- this is required
@@ -31,15 +31,21 @@ export default function Login() {
     {
       console.log(data);
       setmessage(<p style={{color:'red', margin:'0'}}>{data}</p>);
-      setdisplay('flex');
+      setLoading(false);
     }
   };
 
   return (
     <div className={styles.main}>
       <div className={styles.container}>
+        <div className={styles.brandingOverlay}>
+          <div className={styles.brandingContent}>
+            <h1 className={styles.appName}>NotesKeeper</h1>
+            <p className={styles.tagline}>Organize your thoughts</p>
+          </div>
+        </div>
         <div className={styles.form}>
-          <form className={styles.formContent} style={{ display: display }} onSubmit={handleSubmit}>
+          <form className={styles.formContent} onSubmit={handleSubmit}>
             <h2 className={styles.loginHeading}>Login</h2>
             <div className={styles.inputWrapper}>
               <MdEmail className={styles.inputIcon} />
@@ -50,6 +56,7 @@ export default function Login() {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+                disabled={loading}
               />
             </div>
             <div className={styles.inputWrapper}>
@@ -61,16 +68,18 @@ export default function Login() {
                 required
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                disabled={loading}
               />
             </div>
-            <button type='submit'>Submit</button>
+            <button type='submit' disabled={loading}>
+              {loading ? <FontAwesomeIcon icon={faSpinner} className={styles.loading} /> : 'Submit'}
+            </button>
             <p className={styles.signupText}>
               Don&apos;t have an account? <Link href="/signup" className={styles.signupLink}>Sign up</Link>
             </p>
             <Link href="/forgot-password" className={styles.signupLink}>Forgot Password?</Link>
             {message}
           </form>
-          <FontAwesomeIcon className={styles.loading} style={{ display: display === 'flex' ? 'none' : 'flex' }} icon={faSpinner} />
         </div>
       </div>
     </div>

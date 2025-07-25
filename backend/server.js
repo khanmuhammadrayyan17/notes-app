@@ -21,9 +21,10 @@ function generateSessionId() {
 app.use(express.json());
 app.use(cors({
   origin: [
-    'http://localhost:3000', 
+    'http://localhost:3000',
+    'http://192.168.18.7:3000',
     'https://notes-app-1-c8z1.onrender.com'
-  ], // Allow both local development and production
+  ], // Allow both local development, mobile access, and production
   credentials: true
 }));
 app.use(cookieParser());
@@ -248,6 +249,7 @@ app.post('/reset-password', async (req, res) => {
   }
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is also accessible on your network at http://192.168.18.7:${PORT}`);
 });
