@@ -13,7 +13,7 @@ export default function Home() {
   const [notes, setnotes] = useState([]);
   const [fnotes, setfnotes] = useState([]);
   const [render, setrender] = useState(1);
-  const [editingIdx, setEditingIdx] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [access,setaccess] = useState('false');
   const [display, setdisplay] = useState(0);
 
@@ -89,7 +89,7 @@ export default function Home() {
           <ul className={styles.notes}>
             {fnotes.map((row, idx) => (
               <li className={styles.note} key={idx} style={{backgroundColor:row.color}}>
-                  <div className={styles.top} style={{display: editingIdx === idx ? 'none' : 'flex'}}>
+                  <div className={styles.top} style={{display: editingId === row.id ? 'none' : 'flex'}}>
                     <h1 className={styles.titles}>{row.title}</h1>
                     <FontAwesomeIcon className={styles.icon} icon={faTrashCan} onClick={async () => {
                       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
@@ -104,18 +104,18 @@ export default function Home() {
                         setrender(cur => cur + 1);
                       }
                     }} />
-                    <FontAwesomeIcon className={styles.icon} icon={faPenToSquare} onClick={() => setEditingIdx(idx)}/>
+                    <FontAwesomeIcon className={styles.icon} icon={faPenToSquare} onClick={() => setEditingId(row.id)}/>
                   </div>
-                  <p className={styles.text} style={{display: editingIdx === idx ? 'none' : 'flex'}}>{row.content}</p>
-                  <p className={styles.time} style={{display: editingIdx === idx ? 'none' : 'flex'}}>Last Updated: &nbsp;{row.updated_at}</p>
-                <form className={styles.edit} style={{display: editingIdx === idx ? 'flex' : 'none'}}>
+                  <p className={styles.text} style={{display: editingId === row.id ? 'none' : 'flex'}}>{row.content}</p>
+                  <p className={styles.time} style={{display: editingId === row.id ? 'none' : 'flex'}}>Last Updated: &nbsp;{row.updated_at}</p>
+                <form className={styles.edit} style={{display: editingId === row.id ? 'flex' : 'none'}}>
                   <div className={styles.top}>
                     <input
                       className={styles.edittitles}
                       value={row.title}
                       onChange={e => {
                         const newNotes = notes.map((note, i) =>
-                          i === idx ? { ...note, title: e.target.value } : note
+                          note.id === row.id ? { ...note, title: e.target.value } : note
                         );
                         setnotes(newNotes);
                         setfnotes(newNotes); // <-- Add this line
@@ -139,7 +139,7 @@ export default function Home() {
                           }),
                           credentials: 'include'
                         });
-                        setEditingIdx(null);
+                        setEditingId(null);
                         if (response.status === 200) {
                           setrender(cur => cur + 1);
                         }
@@ -151,7 +151,7 @@ export default function Home() {
                     value={row.content}
                     onChange={e => {
                       const newNotes = notes.map((note, i) =>
-                        i === idx ? { ...note, content: e.target.value } : note
+                        note.id === row.id ? { ...note, content: e.target.value } : note
                       );
                       setnotes(newNotes);
                       setfnotes(newNotes); // <-- Add this line
@@ -161,7 +161,7 @@ export default function Home() {
                     <input className={styles.color} type='color' value={row.color} 
                     onChange={e => {
                       const newNotes = notes.map((note, i) =>
-                        i === idx ? { ...note, color: e.target.value } : note
+                        note.id === row.id ? { ...note, color: e.target.value } : note
                       );
                       setnotes(newNotes);
                       setfnotes(newNotes); // <-- Add this line
